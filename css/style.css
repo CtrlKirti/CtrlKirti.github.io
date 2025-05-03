@@ -1,0 +1,371 @@
+/* ========= Root Variables ========= */
+:root {
+    --bg-color: #f3f7f4;
+    --text-color: #333;
+    --accent-color: #5c9d8b;
+    --link-hover: #3e7568;
+    --border-color: #d0e0d5;
+    --font-body: 'Segoe UI', sans-serif;
+}
+
+/* ========= Global Styles ========= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========= Page Container: Main Flex Structure ========= */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex-grow: 1;
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ========= Navigation ========= */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+nav h1 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+nav ul li a.active {
+    color: var(--link-hover);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* ========= Responsive Nav ========= */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        border-top: 1px solid var(--border-color);
+        z-index: 999;
+        padding: 1rem;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+}
+
+/* ========= About Me Section ========= */
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.profile-pic img {
+    width: 180px;
+    height: 180px;
+    border-radius: 100px;
+    object-fit: cover;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-box {
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    max-width: 700px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.about-box h1 {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 1.2rem;
+}
+
+.about-box p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .about-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-pic {
+        flex: 0 0 auto;
+        margin-right: 2rem;
+    }
+
+    .about-box {
+        text-align: left;
+    }
+}
+
+/* ========= Contact Page ========= */
+.contact-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.contact-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.contact-info {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    font-size: 1.05rem;
+    align-items: flex-start;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-left: 1rem;
+}
+
+.contact-item i {
+    width: 22px;
+    height: 22px;
+    color: var(--accent-color);
+}
+
+.contact-item a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+/* ======= PROJECTS SECTION ======= */
+
+#pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+  
+  /* Card Style */
+  .pdf-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .pdf-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .pdf-card img {
+    width: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  
+  .pdf-title {
+    margin-top: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  /* PDF Viewer (Full Width on New Row) */
+  .pdf-viewer-wrapper {
+    grid-column: 1 / -1;
+    animation: fadeSlideIn 0.3s ease-out;
+  }
+  
+  .pdf-viewer-content {
+    background: white;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .pdf-description {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .pdf-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .pdf-buttons button {
+    padding: 0.6rem 1.2rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .pdf-buttons button:hover {
+    background: #0056b3;
+  }
+  
+  .pdf-viewer-content iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+  }
+  
+  /* === MOBILE RESPONSIVENESS === */
+  @media (max-width: 768px) {
+    #pdf-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0 0.5rem;
+    }
+  
+    .pdf-viewer-content {
+      padding: 1rem;
+    }
+  
+    .pdf-buttons {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .pdf-buttons button {
+      width: 100%;
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
+  
+    .pdf-viewer-content iframe {
+      height: 400px;
+    }
+  
+    .pdf-title {
+      font-size: 1.1rem;
+    }
+  
+    .pdf-description {
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* === Animations === */
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+/* ========= Footer ========= */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: white;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    width: 100%;
+}
