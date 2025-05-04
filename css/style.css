@@ -228,7 +228,7 @@ nav ul li a.active {
 
 #pdf-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
     padding: 0 1rem;
@@ -250,11 +250,20 @@ nav ul li a.active {
     transform: translateY(-3px);
   }
   
-  .pdf-card img {
+  .preview-wrapper {
+    aspect-ratio: 16 / 9;
     width: 100%;
+    overflow: hidden;
     border-radius: 6px;
-    object-fit: cover;
   }
+  
+  .preview-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
   
   .pdf-title {
     margin-top: 0.75rem;
