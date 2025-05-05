@@ -318,6 +318,44 @@ nav ul li a.active {
     border: none;
   }
   
+
+  .pdf-js-viewer {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .pdf-js-viewer canvas {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .pdf-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.8rem;
+    gap: 1rem;
+  }
+  
+  .pdf-nav button {
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .pdf-nav button:hover {
+    background-color: var(--link-hover);
+  }
+  
+  .pdf-nav span {
+    font-weight: bold;
+  }
+  
+
   /* === MOBILE RESPONSIVENESS === */
   @media (max-width: 768px) {
     #pdf-grid {

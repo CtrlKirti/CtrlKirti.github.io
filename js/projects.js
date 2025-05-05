@@ -67,10 +67,12 @@ const pdfData = [
         preview: "projects/previews/Sony_IT.png",
         presentation: "projects/pdfs/Sony_IT.pdf",
         description: "An IT workflow strategy and system audit for Sony India teams."
-      },
+    },
   ];
   
   let currentViewer = null;
+  let currentPDFUrl = null;
+  let pdfInstances = {};
   
   function loadPdfCards() {
     const container = document.getElementById("pdf-grid");
@@ -94,9 +96,10 @@ const pdfData = [
     closeCurrentViewer();
   
     const grid = document.getElementById("pdf-grid");
-    
-    // Determine which PDF to load by default
-    const initialPdfSrc = pdf.presentation || pdf.proposal || "";
+  
+    const pdfUrl = pdf.presentation || pdf.proposal;
+    currentPDFUrl = pdf.presentation || pdf.proposal || null;
+
 
     const viewerWrapper = document.createElement("div");
     viewerWrapper.className = "pdf-viewer-wrapper";
@@ -104,31 +107,102 @@ const pdfData = [
       <div class="pdf-viewer-content">
         <div class="pdf-description">${pdf.description || "No description available."}</div>
         <div class="pdf-buttons">
-          ${pdf.presentation ? `<button onclick="updateIframeSrc('iframe-${index}', '${pdf.presentation}')">View Presentation</button>` : ""}
-          ${pdf.proposal ? `<button onclick="updateIframeSrc('iframe-${index}', '${pdf.proposal}')">View Proposal</button>` : ""}
+          ${pdf.presentation ? `<button onclick="setCurrentPDF(${index}, '${pdf.presentation}')">View Presentation</button>` : ""}
+          ${pdf.proposal ? `<button onclick="setCurrentPDF(${index}, '${pdf.proposal}')">View Proposal</button>` : ""}
+          <button onclick="downloadCurrentPDF(${index})">Download</button>
           <button onclick="closeCurrentViewer()">Close</button>
         </div>
-        <iframe id="iframe-${index}" src="${initialPdfSrc}" height="600px"></iframe>
+        <div class="pdf-js-viewer">
+          <canvas id="pdf-canvas-${index}"></canvas>
+          <div class="pdf-nav">
+            <button onclick="navigatePage(${index}, -1)">Prev</button>
+            <span id="page-info-${index}">Page 1</span>
+            <button onclick="navigatePage(${index}, 1)">Next</button>
+          </div>
+        </div>
       </div>
     `;
   
-    // Insert the viewer after the row where the clicked card appears
     insertViewerAfterRow(grid, clickedCard, viewerWrapper);
-  
     currentViewer = viewerWrapper;
-  }
   
-  function closeCurrentViewer() {
-    if (currentViewer && currentViewer.parentNode) {
-      currentViewer.remove();
-      currentViewer = null;
+    // Immediately load the PDF into the viewer
+    if (pdfUrl) {
+      loadPDFJS(`pdf-canvas-${index}`, pdfUrl, index);
     }
   }
   
-  function updateIframeSrc(iframeId, newSrc) {
+  function updateIframeSrc(iframeId, url) {
     const iframe = document.getElementById(iframeId);
     if (iframe) {
-      iframe.src = newSrc;
+      iframe.src = url;
+      currentPDFUrl = url;
+    }
+  }
+
+  function setCurrentPDF(index, url) {
+    currentPDFUrl = url;
+    loadPDFJS(`pdf-canvas-${index}`, url, index);
+  }
+  
+  function downloadCurrentPDF() {
+    if (!currentPDFUrl) return;
+    const link = document.createElement('a');
+    link.href = currentPDFUrl;
+    link.target = '_blank'; // Optional: open in new tab if download fails
+    link.rel = 'noopener';
+    link.click();
+  }
+  
+  
+  function loadPDFJS(canvasId, url, index) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext("2d");
+  
+    pdfjsLib.getDocument(url).promise.then(pdf => {
+      pdfInstances[index] = {
+        pdfDoc: pdf,
+        pageNum: 1,
+        canvas: canvas,
+        ctx: ctx,
+      };
+      renderPage(index);
+    });
+  }
+  
+  function renderPage(index) {
+    const instance = pdfInstances[index];
+    const { pdfDoc, pageNum, canvas, ctx } = instance;
+  
+    pdfDoc.getPage(pageNum).then(page => {
+      const viewport = page.getViewport({ scale: 1.5 });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+  
+      page.render({ canvasContext: ctx, viewport });
+  
+      document.getElementById(`page-info-${index}`).textContent = `Page ${pageNum} of ${pdfDoc.numPages}`;
+    });
+  }
+  
+  function navigatePage(index, direction) {
+    const instance = pdfInstances[index];
+    if (!instance) return;
+  
+    const { pdfDoc } = instance;
+    const newPage = instance.pageNum + direction;
+  
+    if (newPage >= 1 && newPage <= pdfDoc.numPages) {
+      instance.pageNum = newPage;
+      renderPage(index);
+    }
+  }
+  
+  function closeCurrentViewer() {
+    if (currentViewer) {
+      currentViewer.remove();
+      currentViewer = null;
+      currentPDFInstance = null;
     }
   }
   
