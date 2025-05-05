@@ -63,10 +63,16 @@ const pdfData = [
       description: "Innovation, Industry & Infra By Gandharv G. and Kirti R."
     },
     {
-        title: "Sony IT",
-        preview: "projects/previews/Sony_IT.png",
-        presentation: "projects/pdfs/Sony_IT.pdf",
-        description: "An IT workflow strategy and system audit for Sony India teams."
+      title: "Sony IT",
+      preview: "projects/previews/Sony_IT.jpg",
+      presentation: "projects/pdfs/Sony_IT.pdf",
+      description: "An IT workflow strategy and system audit for Sony India teams."
+    },
+    {
+      title: "A Recycling Paradox",
+      preview: "projects/previews/Metaal_THESIS.jpg",
+      presentation: "projects/pdfs/Metaal_THESIS.pdf",
+      description: "Thesis Project by Kirti R."
     },
   ];
   
