@@ -35,7 +35,7 @@ function highlightActivePage() {
     const href = link.getAttribute("href");
 
     // If the link's href matches the current page, add the "active" class
-    if (currentPage === href) {
+    if (currentPage.replace(".html","") === href.replace(".html","")) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");  // Remove the active class from non-matching links

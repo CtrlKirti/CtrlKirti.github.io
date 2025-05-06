@@ -1,5 +1,17 @@
 const pdfData = [
     {
+      title: "Airstream",
+      preview: "projects/previews/Airstream.jpg",
+      report: "projects/pdfs/Airstream.pdf",
+      description: ""
+    },
+    {
+      title: "A Recycling Paradox",
+      preview: "projects/previews/Metaal_THESIS.jpg",
+      presentation: "projects/pdfs/Metaal_THESIS.pdf",
+      description: "Thesis Project by Kirti R."
+    },
+    {
       title: "BioNTech",
       preview: "projects/previews/BioNTech.jpg",
       presentation: "projects/pdfs/BioNTech.pdf",
@@ -37,11 +49,23 @@ const pdfData = [
       description: ""
     },
     {
+      title: "Geopolitics: Sanitation & Economic Growth",
+      preview: "projects/previews/Geopolitics_Sanitation_Economic_Growth.jpg",
+      report: "projects/pdfs/Geopolitics_Sanitation_Economic_Growth.pdf",
+      description: "Geopolitics Final Assignment 2: Sanitation & Economic Growth"
+    },
+    {
       title: "Goovi",
       preview: "projects/previews/Goovi.jpg",
       presentation: "projects/pdfs/Goovi.pdf",
       proposal: "projects/pdfs/Goovi_proposal.pdf",
       description: "EMILIA REICHARDT, ZLATA TIMOFEJEVA, JASMINA BADIC and KIRTI"
+    },
+    {
+      title: "Heineken",
+      preview: "projects/previews/Heineken.jpg",
+      report: "projects/pdfs/Heineken.pdf",
+      description: ""
     },
     {
       title: "Hitachi",
@@ -63,16 +87,32 @@ const pdfData = [
       description: "Innovation, Industry & Infra By Gandharv G. and Kirti R."
     },
     {
+      title: "Intercultural Communication: Analysing Indo-Emirati Culture in the Multicultural Perspective",
+      preview: "projects/previews/Intercultural_Communication.jpg",
+      report: "projects/pdfs/Intercultural_Communication.pdf",
+      description: "Kirti R."
+    },
+    {
+      title: "Macroeconomics Report: Innovation Capacity & Economic Growth",
+      preview: "projects/previews/Macro_Innovation_Capacity_and_Economic_Growth.jpg",
+      report: "projects/pdfs/Macro_Innovation_Capacity_and_Economic_Growth.pdf",
+      description: "Macroeconomics Report: Class Assignment by Lauren Müller, Kirti R and Renee Lavalle Lopez"
+    },
+    {
+      title: "Keep It Blue",
+      preview: "projects/previews/Keep_it_blue.jpg",
+      presentation: "projects/pdfs/Keep_it_blue.pdf",
+      presentation2: "projects/pdfs/Keep_it_blue_2.pdf",
+      presentation3: "projects/pdfs/Keep_it_blue_3.pdf",
+      proposal: "projects/pdfs/Keep_it_blue_proposal.pdf",
+      report: "projects/pdfs/Keep_it_blue_report.pdf",
+      description: "Kirti R. and Renee L."
+    },
+    {
       title: "Sony IT",
       preview: "projects/previews/Sony_IT.jpg",
       presentation: "projects/pdfs/Sony_IT.pdf",
       description: "An IT workflow strategy and system audit for Sony India teams."
-    },
-    {
-      title: "A Recycling Paradox",
-      preview: "projects/previews/Metaal_THESIS.jpg",
-      presentation: "projects/pdfs/Metaal_THESIS.pdf",
-      description: "Thesis Project by Kirti R."
     },
   ];
   
@@ -103,7 +143,7 @@ const pdfData = [
   
     const grid = document.getElementById("pdf-grid");
   
-    const pdfUrl = pdf.presentation || pdf.proposal;
+    const pdfUrl = pdf.presentation || pdf.proposal || pdf.report;
     currentPDFUrl = pdf.presentation || pdf.proposal || null;
 
 
@@ -114,7 +154,10 @@ const pdfData = [
         <div class="pdf-description">${pdf.description || "No description available."}</div>
         <div class="pdf-buttons">
           ${pdf.presentation ? `<button onclick="setCurrentPDF(${index}, '${pdf.presentation}')">View Presentation</button>` : ""}
+          ${pdf.presentation2 ? `<button onclick="setCurrentPDF(${index}, '${pdf.presentation2}')">View Presentation 2</button>` : ""}
+          ${pdf.presentation3 ? `<button onclick="setCurrentPDF(${index}, '${pdf.presentation3}')">View Presentation 3</button>` : ""}
           ${pdf.proposal ? `<button onclick="setCurrentPDF(${index}, '${pdf.proposal}')">View Proposal</button>` : ""}
+          ${pdf.report ? `<button onclick="setCurrentPDF(${index}, '${pdf.report}')">View Report</button>` : ""}
           <button onclick="downloadCurrentPDF(${index})">Download</button>
           <button onclick="closeCurrentViewer()">Close</button>
         </div>
