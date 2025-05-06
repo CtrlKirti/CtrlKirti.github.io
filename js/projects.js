@@ -37,6 +37,20 @@ const pdfData = [
       description: "Capriolo by Kirti"
     },
     {
+      title: "EcoXchange",
+      preview: "projects/previews/EcoXchange.jpg",
+      presentation: "projects/pdfs/EcoXchange.pdf",
+      gannt: "projects/pdfs/EcoXchange_Gannt_Chart.pdf",
+      projection: "projects/pdfs/EcoXchange_Financial_Projections.pdf",
+      description: "PW2"
+    },
+    {
+      title: "Enron Scandal",
+      preview: "projects/previews/Enron_scandal.jpg",
+      presentation: "projects/pdfs/Enron_scandal.pdf",
+      description: ""
+    },
+    {
       title: "Entrepreneurial Personality",
       preview: "projects/previews/Entrepreneurial_Personality.jpg",
       presentation: "projects/pdfs/Entrepreneurial_Personality.pdf",
@@ -109,11 +123,71 @@ const pdfData = [
       description: "Kirti R. and Renee L."
     },
     {
+      title: "Komodra: A Case Study of a Rising Business",
+      preview: "projects/previews/Komodra.jpg",
+      presentation: "projects/pdfs/Komodra.pdf",
+      description: "Business Strategy by Renee L. and Kirti R."
+    },
+    {
+      title: "Labour Markets in the Green Economy",
+      preview: "projects/previews/Labour_Markets_in_the_Green_Economy.jpg",
+      report: "projects/pdfs/Labour_Markets_in_the_Green_Economy.pdf",
+      description: "Risks and Opportunities for the Labour Force by Emilia Reichardt, Nadia Flori, Kirti Rankawat and Zlata Timofejeva"
+    },
+    {
+      title: "Linkedin Canvas",
+      preview: "projects/previews/Linkedin_Canvas.jpg",
+      presentation: "projects/pdfs/Linkedin_Canvas.pdf",
+      description: "Kirti R.'s Linkedin Canvas"
+    },
+    {
+      title: "MUDEC: Sustainability by Default",
+      preview: "projects/previews/MUDEC_SUSTAINABILITY_BY_DEFAULT.jpg",
+      presentation: "projects/pdfs/MUDEC_SUSTAINABILITY_BY_DEFAULT.pdf",
+      description: "The Rite of Passage by Luca Barricelli, Renee Lavalle Lopez, Kirti R., Gianinna Spinzi In cooperation with: LePalette Collective"
+    },
+    {
+      title: "Linkedin Canvas",
+      preview: "projects/previews/Linkedin_Canvas.jpg",
+      presentation: "projects/pdfs/Linkedin_Canvas.pdf",
+      description: "Kirti R.'s Linkedin Canvas"
+    },
+    {
+      title: "Multi-Stakeholder Management: SHELL and IUCN",
+      preview: "projects/previews/Multi-Stakeholder_Management.jpg",
+      presentation: "projects/pdfs/Multi-Stakeholder_Management.pdf",
+      description: ""
+    },
+    {
+      title: "Organizational Leadership: Self Evaluation Report",
+      preview: "projects/previews/Organizational_leadership.jpg",
+      report: "projects/pdfs/Organizational_leadership.pdf",
+      description: "Kirti R."
+    },
+    {
+      title: "Overcoming Financial Challenges in Green Procurement: A Study in the Context of Developing Countries",
+      preview: "projects/previews/Overcoming_Financial_Challenges_in_Green_Procurement.jpg",
+      report: "projects/pdfs/Overcoming_Financial_Challenges_in_Green_Procurement.pdf",
+      description: "Kirti R."
+    },
+    {
+      title: "Pela: Case Study Analysis",
+      preview: "projects/previews/Pela.jpg",
+      presentation: "projects/pdfs/Pela.pdf",
+      description: "Pela Case Study Analysis Spencer & Kirti R."
+    },
+    {
+      title: "Pepsi Design Challenge",
+      preview: "projects/previews/Pepsi_Design_Challenge.jpg",
+      presentation: "projects/pdfs/Pepsi_Design_Challenge.pdf",
+      description: "Making Memories Sustainably: Design Challenge By KR Consultancies"
+    },
+    {
       title: "Sony IT",
       preview: "projects/previews/Sony_IT.jpg",
       presentation: "projects/pdfs/Sony_IT.pdf",
       description: "An IT workflow strategy and system audit for Sony India teams."
-    },
+    }
   ];
   
   let currentViewer = null;
@@ -158,6 +232,8 @@ const pdfData = [
           ${pdf.presentation3 ? `<button onclick="setCurrentPDF(${index}, '${pdf.presentation3}')">View Presentation 3</button>` : ""}
           ${pdf.proposal ? `<button onclick="setCurrentPDF(${index}, '${pdf.proposal}')">View Proposal</button>` : ""}
           ${pdf.report ? `<button onclick="setCurrentPDF(${index}, '${pdf.report}')">View Report</button>` : ""}
+          ${pdf.gannt ? `<button onclick="setCurrentPDF(${index}, '${pdf.gannt}')">View Gannt Chart</button>` : ""}
+          ${pdf.projection ? `<button onclick="setCurrentPDF(${index}, '${pdf.projection}')">View Financial Projections</button>` : ""}
           <button onclick="downloadCurrentPDF(${index})">Download</button>
           <button onclick="closeCurrentViewer()">Close</button>
         </div>
