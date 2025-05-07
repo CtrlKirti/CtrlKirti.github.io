@@ -184,9 +184,9 @@ const pdfData = [
     },
     {
       title: "RIBEIRÃO PRETO SCIENCE PARK",
-      preview: "projects/previews/RIBEIRÃO_PRETO_SCIENCE_PARK.jpg",
-      presentation: "projects/pdfs/RIBEIRÃO_PRETO_SCIENCE_PARK.pdf",
-      presentation: "projects/pdfs/RIBEIRÃO_PRETO_SCIENCE_PARK_report.pdf",
+      preview: "projects/previews/RIBEIRAO_PRETO_SCIENCE_PARK.jpg",
+      presentation: "projects/pdfs/RIBEIRAO_PRETO_SCIENCE_PARK.pdf",
+      report: "projects/pdfs/RIBEIRAO_PRETO_SCIENCE_PARK_report.pdf",
       description: "By Kirt R."
     },
     {
