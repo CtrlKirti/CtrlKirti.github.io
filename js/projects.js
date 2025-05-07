@@ -183,11 +183,68 @@ const pdfData = [
       description: "Making Memories Sustainably: Design Challenge By KR Consultancies"
     },
     {
+      title: "RIBEIRÃO PRETO SCIENCE PARK",
+      preview: "projects/previews/RIBEIRÃO_PRETO_SCIENCE_PARK.jpg",
+      presentation: "projects/pdfs/RIBEIRÃO_PRETO_SCIENCE_PARK.pdf",
+      presentation: "projects/pdfs/RIBEIRÃO_PRETO_SCIENCE_PARK_report.pdf",
+      description: "By Kirt R."
+    },
+    {
+      title: "Scuba Diving 101",
+      preview: "projects/previews/Scuba_diving_101.jpg",
+      presentation: "projects/pdfs/Scuba_diving_101.pdf",
+      description: "Personal Brand by Kirti R."
+    },
+    {
+      title: "Seaspiracy: Stop Eating Fish",
+      preview: "projects/previews/Seaspiracy_stop_eating_fish.jpg",
+      presentation: "projects/pdfs/Seaspiracy_stop_eating_fish.pdf",
+      description: ""
+    },
+    {
+      title: "Self Reflection Report: BBA in Sustainability Management",
+      preview: "projects/previews/Self_reflection_Report.jpg",
+      report: "projects/pdfs/Self_reflection_Report.pdf",
+      description: "By Kirti R., Professor: Joe Di Donna, Ph.D"
+    },
+    {
+      title: "Corporate Analysis of Sustainability Risks and Opportunities of IKEA and SHELL",
+      preview: "projects/previews/Shell_IKEA.jpg",
+      presentation: "projects/pdfs/Shell_IKEA.pdf",
+      report: "projects/pdfs/Shell_IKEA_report.pdf",
+      description: "Lada Kuzina and Kirti R."
+    },
+    {
+      title: "Spiritual Leadership: Meaning in the Sustainable Workplace",
+      preview: "projects/previews/Spiritual_Leadership.jpg",
+      presentation: "projects/pdfs/Spiritual_Leadership.pdf",
+      report: "projects/pdfs/Spiritual_Leadership_report.pdf",
+      description: "by Kirti R."
+    },
+    {
+      title: "Sustainability: CAN YOU SPOT WHAT IS BEING CULTIVATED?",
+      preview: "projects/previews/Sustainability_Presentation.jpg",
+      presentation: "projects/pdfs/Sustainability_Presentation.pdf",
+      description: ""
+    },
+    {
       title: "Sony IT",
       preview: "projects/previews/Sony_IT.jpg",
       presentation: "projects/pdfs/Sony_IT.pdf",
       description: "An IT workflow strategy and system audit for Sony India teams."
-    }
+    },
+    {
+      title: "Sustainability Report Analysis of Orange Fiber, Solar Ventures Capital, and Bav Tailor",
+      preview: "projects/previews/Sustainability_Report_Analysis.jpg",
+      report: "projects/pdfs/Sustainability_Report_Analysis.pdf",
+      description: "Kirt R."
+    },
+    {
+      title: "Press Release",
+      preview: "projects/previews/Press_Release.jpg",
+      presentation: "projects/pdfs/Press_Release.pdf",
+      description: "Kirt R."
+    },
   ];
   
   let currentViewer = null;
