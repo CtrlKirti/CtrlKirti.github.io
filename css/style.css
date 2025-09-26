@@ -428,3 +428,115 @@ footer {
     margin-top: auto;
     width: 100%;
 }
+
+/* ========= Heartfulness Section ========= */
+.heartfulness-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    align-items: center;
+    margin: 3rem 0 4rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.heartfulness-tile {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(92, 157, 139, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+    padding: 2.2rem 2.5rem;
+    max-width: 650px;
+    width: 90%;
+    text-align: center;
+    transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.2s;
+    will-change: transform;
+    margin: 0 auto;
+}
+
+.heartfulness-tile.tile-row {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(92, 157, 139, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+    padding: 2.2rem 2.5rem;
+    max-width: 900px;
+    width: 95%;
+    margin: 0 auto;
+    transition: box-shadow 0.2s;
+    will-change: transform;
+    overflow: hidden;
+    position: relative;
+}
+
+.heartfulness-tile.tile-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.tile-img {
+    flex: 0 0 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 120px;
+    margin-right: 2.2rem;
+    margin-left: 0;
+    transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+}
+
+.heartfulness-tile.tile-row.reverse .tile-img {
+    margin-left: 2.2rem;
+    margin-right: 0;
+}
+
+.tile-img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: #f3f7f4;
+}
+
+.tile-content {
+    flex: 1 1 0%;
+    text-align: left;
+}
+
+.heartfulness-tile h2 {
+    color: var(--accent-color);
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+}
+
+.heartfulness-tile p {
+    color: var(--text-color);
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .heartfulness-tile.tile-row {
+        flex-direction: column !important;
+        text-align: center;
+        padding: 1.5rem 0.7rem;
+    }
+    .tile-img, .heartfulness-tile.tile-row.reverse .tile-img {
+        margin: 0 0 1.2rem 0;
+    }
+    .tile-content {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .heartfulness-tile {
+        padding: 1.2rem 0.7rem;
+        font-size: 1rem;
+    }
+    .heartfulness-section {
+        gap: 1.2rem;
+    }
+}
