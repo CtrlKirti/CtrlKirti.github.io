@@ -1,24 +1,67 @@
-// Dynamically include nav and footer
-document.addEventListener("DOMContentLoaded", function () {
-  const includes = document.querySelectorAll("[data-include]");
-  includes.forEach(async (el) => {
-    const file = el.getAttribute("data-include");
-    const res = await fetch(file);
-    if (res.ok) {
-      el.innerHTML = await res.text();
-      // lucide.createIcons?.(); // Render Lucide icons
-      highlightActivePage(); // Call the function after nav is loaded
-    }
+// Early check for eco mode to prevent visual flash.
+if (localStorage.getItem("eco-mode") === "true") {
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("eco-mode");
   });
-  
-  // Toggle hamburger menu
-  const menuToggle = document.querySelector('.menu-toggle');
-  if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMenu);
+}
+
+// Dynamically include nav and footer.
+document.addEventListener("DOMContentLoaded", async function () {
+  const includes = document.querySelectorAll("[data-include]");
+
+  await Promise.all(
+    Array.from(includes).map(async (el) => {
+      const file = el.getAttribute("data-include");
+      if (!file) return;
+
+      const res = await fetch(file);
+      if (res.ok) {
+        el.innerHTML = await res.text();
+      }
+    })
+  );
+
+  initEcoMode();
+  highlightActivePage();
+  if (window.lucide?.createIcons) {
+    window.lucide.createIcons();
   }
 });
 
-// Toggle hamburger menu
+function initEcoMode() {
+  const ecoToggleBtn = document.getElementById("eco-toggle");
+  if (!ecoToggleBtn || ecoToggleBtn.dataset.initialized) return;
+
+  ecoToggleBtn.dataset.initialized = "true";
+  const iconEl = ecoToggleBtn.querySelector(".eco-icon");
+  const stateEl = ecoToggleBtn.querySelector(".eco-state");
+
+  const isEcoMode = localStorage.getItem("eco-mode") === "true";
+  if (isEcoMode) {
+    document.body.classList.add("eco-mode");
+  }
+  setEcoToggleState(ecoToggleBtn, iconEl, stateEl, isEcoMode);
+
+  ecoToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("eco-mode");
+    const isActive = document.body.classList.contains("eco-mode");
+    localStorage.setItem("eco-mode", isActive);
+    setEcoToggleState(ecoToggleBtn, iconEl, stateEl, isActive);
+  });
+}
+
+function setEcoToggleState(buttonEl, iconEl, stateEl, isEnabled) {
+  if (iconEl) {
+    iconEl.textContent = isEnabled ? "☀️" : "🌱";
+  }
+  if (stateEl) {
+    stateEl.textContent = isEnabled ? "On" : "Off";
+  }
+  if (buttonEl) {
+    buttonEl.setAttribute("aria-pressed", isEnabled ? "true" : "false");
+  }
+}
+
 function toggleMenu() {
   const navLinks = document.getElementById("nav-links");
   if (navLinks) {
@@ -28,17 +71,21 @@ function toggleMenu() {
 
 // Function to highlight the active menu item
 function highlightActivePage() {
-  const currentPage = window.location.pathname.split("/").pop(); // Get the current page name
+  const currentPage = window.location.pathname.split("/").pop();
+  const normalizedCurrent = (!currentPage || currentPage === "index.html")
+    ? "index"
+    : currentPage.replace(".html", "");
   const navLinks = document.querySelectorAll("nav ul li a");
 
   navLinks.forEach(link => {
     const href = link.getAttribute("href");
+    if (!href) return;
+    const normalizedHref = href.replace(".html", "");
 
-    // If the link's href matches the current page, add the "active" class
-    if (currentPage.replace(".html","") === href.replace(".html","")) {
+    if (normalizedCurrent === normalizedHref || (normalizedCurrent === "home" && normalizedHref === "index")) {
       link.classList.add("active");
     } else {
-      link.classList.remove("active");  // Remove the active class from non-matching links
+      link.classList.remove("active");
     }
   });
 }

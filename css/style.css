@@ -5,7 +5,29 @@
     --accent-color: #5c9d8b;
     --link-hover: #3e7568;
     --border-color: #d0e0d5;
+    --nav-bg: white;
+    --card-bg: white;
     --font-body: 'Segoe UI', sans-serif;
+    --btn-bg: #007bff;
+    --btn-text: white;
+}
+
+/* ========= Eco Mode Variables ========= */
+body.eco-mode {
+    --bg-color: #1a1e1b;
+    --text-color: #d0e0d5;
+    --accent-color: #6bb8a2;
+    --link-hover: #82d0ba;
+    --border-color: #2b3a33;
+    --nav-bg: #111412;
+    --card-bg: #222924;
+    --btn-bg: #324a40;
+    --btn-text: #e0eee6;
+}
+
+/* Eco Mode Image Dampening */
+body.eco-mode img {
+    filter: brightness(0.8) contrast(1.1);
 }
 
 /* ========= Global Styles ========= */
@@ -49,13 +71,57 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: white;
+    background-color: var(--nav-bg);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.eco-toggle-btn {
+  background-color: color-mix(in srgb, var(--accent-color) 12%, transparent);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+    cursor: pointer;
+  font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+    color: var(--accent-color);
+  transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.eco-toggle-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-color);
+}
+
+.eco-toggle-btn .eco-icon {
+  font-size: 1.1rem;
+}
+
+.eco-toggle-btn .eco-label {
+  opacity: 0.9;
+}
+
+.eco-toggle-btn .eco-state {
+  min-width: 2.1rem;
+  text-align: left;
+}
+
+body.eco-mode .eco-toggle-btn {
+  background-color: color-mix(in srgb, var(--accent-color) 26%, transparent);
 }
 
 nav h1 {
@@ -116,7 +182,7 @@ nav ul li a.active {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: white;
+        background-color: var(--nav-bg);
         position: absolute;
         top: 60px;
         left: 0;
@@ -127,6 +193,15 @@ nav ul li a.active {
 
     nav ul.show {
         display: flex;
+    }
+
+    .eco-toggle-btn {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.55rem;
+    }
+
+    .eco-toggle-btn .eco-label {
+      display: none;
     }
 }
 
@@ -149,7 +224,7 @@ nav ul li a.active {
 }
 
 .about-box {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     padding: 2rem;
@@ -192,7 +267,7 @@ nav ul li a.active {
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
-    background: white;
+    background-color: var(--card-bg);
     border-radius: 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     text-align: center;
@@ -247,8 +322,8 @@ nav ul li a.active {
   
   /* Card Style */
   .pdf-card {
-    background: white;
-    border: 1px solid #ddd;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 0.5rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -290,9 +365,9 @@ nav ul li a.active {
   }
   
   .pdf-viewer-content {
-    background: white;
+    background-color: var(--card-bg);
     padding: 1.5rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
@@ -300,7 +375,7 @@ nav ul li a.active {
   .pdf-description {
     margin-bottom: 1rem;
     font-size: 1rem;
-    color: #333;
+    color: var(--text-color);
   }
   
   .pdf-buttons {
@@ -312,8 +387,8 @@ nav ul li a.active {
   
   .pdf-buttons button {
     padding: 0.6rem 1.2rem;
-    background: #007bff;
-    color: white;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -421,12 +496,17 @@ nav ul li a.active {
 footer {
     text-align: center;
     padding: 1.5rem;
-    background-color: white;
+  background-color: var(--nav-bg);
     color: var(--text-color);
     font-size: 0.9rem;
     border-top: 1px solid var(--border-color);
     margin-top: auto;
     width: 100%;
+}
+
+body.eco-mode footer {
+  background-color: var(--nav-bg);
+  border-top-color: var(--border-color);
 }
 
 /* ========= Heartfulness Section ========= */
@@ -441,7 +521,7 @@ footer {
 }
 
 .heartfulness-tile {
-    background: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     box-shadow: 0 6px 24px rgba(92, 157, 139, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
     padding: 2.2rem 2.5rem;
@@ -456,7 +536,7 @@ footer {
 .heartfulness-tile.tile-row {
     display: flex;
     align-items: center;
-    background: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     box-shadow: 0 6px 24px rgba(92, 157, 139, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
     padding: 2.2rem 2.5rem;
@@ -496,7 +576,7 @@ footer {
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    background: #f3f7f4;
+    background-color: var(--bg-color);
 }
 
 .tile-content {

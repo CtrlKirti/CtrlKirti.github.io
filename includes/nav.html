@@ -1,10 +1,17 @@
 <nav>
-  <h1><a href="home.html" class="logo-link">Kirti</a></h1>
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  <ul id="nav-links">
-    <li><a href="home.html">Home</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="heartfulness.html">Heartfulness</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+  <h1><a href="index.html" class="logo-link">Kirti</a></h1>
+  <div class="nav-right">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="heartfulness.html">Heartfulness</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="eco-toggle" class="eco-toggle-btn" aria-label="Toggle Eco Mode" aria-pressed="false" title="Toggle Eco Mode">
+      <span class="eco-icon" aria-hidden="true">🌱</span>
+      <span class="eco-label">Eco Mode:</span>
+      <span class="eco-state">Off</span>
+    </button>
+  </div>
 </nav>
